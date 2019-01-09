@@ -1,0 +1,50 @@
+<!-- <%= trends%> -->
+<% include ./partials/header %>
+<h1 style="text-align:center; margin-top:80px;">Top Trends</h1>
+<div class="trend-container">
+  <% trends.forEach(function (trend) { %>
+    <div class="trend-box">
+      <div class = "trend-box-heading">
+        Recent Trends
+      </div>
+      <div>
+        <ul class = "trend-list">
+          <% trend.forEach(function (tr) { %>
+            <li class = "trend-list-item">
+              <a href="/trends/<%= tr %>"><%= tr %></a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  <% }) %>
+</div>
+<script>
+    let hlinks = document.querySelectorAll('.trend-list-item > a');
+    
+    hlinks.forEach(function (hlink) {
+      let h = hlink.getAttribute('href');
+      for(let i = 0; i<h.length;i++)
+      {
+        if(h[i] == '#')
+        {
+          h = h.substr(0 , i) + '`' + h.substr(i+1);
+        }
+      }
+      hlink.setAttribute('href',h);
+    })
+
+    let headings = document.querySelectorAll('.trend-box-heading');
+    for(let i = 0;i<24;i++)
+    {
+      if(i == 0)
+      {
+        headings[i].innerHTML = 'Current Trends';
+      }
+      else{
+        headings[i].innerHTML = `${i} Hour`;
+      }
+    }
+</script>
+<% include ./partials/script %>
+<% include ./partials/footer %>

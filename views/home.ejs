@@ -1,0 +1,74 @@
+<% include ./partials/header %>
+
+<div class = "parallax">
+</div>
+
+<div class = "home-heading">
+    <h1>The Analyst</h1>
+    <h2 style="font-size:40px;" >Feel The Vibe</h2>
+</div>
+
+<div class="home-content">
+      <form action="/showResults" method="GET">
+        <label>
+          <input type="text" name="search">
+          <i class="fas fa-microphone"></i>
+      </label>
+        <input type="submit" value="Search">
+      </form>
+</div>
+<div style="margin-top: 96px;text-align:center;font-size:30px">Top Trends</div>
+<div class="trend-container">
+    <% trends.forEach(function (trend) { %>
+      <div class="trend-box">
+        <div class = "trend-box-heading">
+          Recent Trends
+        </div>
+        <div>
+          <ul class = "trend-list">
+            <% trend.forEach((tr) => { %>
+              <li class = "trend-list-item">
+                <a href="/trends/<%= tr %>"><%= tr %></a>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+  <script>
+      let hlinks = document.querySelectorAll('.trend-list-item > a');
+      
+      hlinks.forEach(function (hlink) {
+        let h = hlink.getAttribute('href');
+        for(let i = 0; i<h.length;i++)
+        {
+          if(h[i] == '#')
+          {
+            h = h.substr(0 , i) + '`' + h.substr(i+1);
+          }
+        }
+        hlink.setAttribute('href',h);
+      })
+  
+      let headings = document.querySelectorAll('.trend-box-heading');
+      for(let i = 0;i<24;i++)
+      {
+        if(i == 0)
+        {
+          headings[i].innerHTML = 'Current Trends';
+        }
+        else{
+          headings[i].innerHTML = `${i} Hour`;
+        }
+      }
+      
+
+        icon.addEventListener('click', function () {
+          foo();
+        });
+
+        
+  </script>
+<% include ./partials/script %>
+<% include ./partials/footer %>

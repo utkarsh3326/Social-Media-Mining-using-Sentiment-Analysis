@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <h2 style="text-align:center">Welcome to "The Analyst"</h2>
+      <h2 style="text-align:center">Top Stories</h2>
+    </div>
+  </div>
+  <div class="news-container">
+    <ul>
+      <% for(let i=0; i< news.length ;i++){ %>
+        <li>
+          <div>
+            <div class="img">
+              <img src="<%= news[i].imageurl %>" alt="#">
+            </div>
+            <div class="content">
+              <div class="heading">
+                <h2 style = "font-family: 'Niramit'";
+              }>
+                    <%= news[i].heading %>
+                </h2>
+              </div>
+              <div class="description">
+                <% if(news[i].description.length < 170) {%>
+                <%= news[i].description %>
+                <% }else {%>
+                <%= news[i].description.slice(0,170) %> ....
+                <% } %>
+              </div>
+                <a href="/news/<%= news[i].url %>" class="btn-rd">Read More</a>
+            </div>
+          </div>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<% include ./partials/script %>
+<% include ./partials/footer %>

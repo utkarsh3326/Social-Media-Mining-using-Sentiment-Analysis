@@ -1,0 +1,35 @@
+<div class="display-result">
+  <%= data %>
+</div>
+<script>
+  let str = document.querySelector('.display-result').innerText;
+  let arr = [];
+  for(let i = 0;i<str.length;i++)
+  {
+    if(str.charAt(i) == '%')
+    {
+      arr.push(i);
+    }
+  }
+  console.log(arr);
+  document.querySelector('.display-result').innerHTML = "";
+  for(let i = 0 ; i<arr.length;i++)
+  {
+    if(i == 0)
+    {
+      document.querySelector('.display-result').innerHTML += `
+      <div>
+        ${str.substr(0,arr[i]+1)}
+      </div>
+    `
+    }
+    else
+    {
+      document.querySelector('.display-result').innerHTML += `
+      <div>
+        ${str.substr(arr[i-1]+1,arr[i]+1)}
+      </div>
+    `
+    }
+  }
+</script>

@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+<div class="search-box">
+  <form action="/showResults" method="GET">
+      <div class="input-box">
+        <input style="width:90%;display:inline-block;margin-right:10px;" type="text" placeholder="Search" name="search">
+        <i style="font-size:28px;" class="fas fa-microphone"></i>
+      </div>
+      <input class="search" type="submit" value="Search">
+  </form>
+</div>
+<script>
+    icon.addEventListener('click', () => {
+      foo();
+    }); 
+</script>
+
+<% include ./partials/script %>
+<% include ./partials/footer %>

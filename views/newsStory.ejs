@@ -1,0 +1,30 @@
+<% include ./partials/header %>
+ <div class="main-container">
+   <h2><%= newsData['headline'] %></h2>
+   <div class="image-container">
+     <div>
+       <img src="<%= newsData['imageurl'] %>" alt="#">
+     </div>
+     <div class="image-caption">
+       <h5><%= newsData['imageCaption'] %></h5>
+     </div>
+   </div>
+   <!-- <div class="btn-st">
+     <a href="/showResult?firstname=<%= newsData['headline'] %>">View Sentiment Analysis</a>
+   </div> -->
+   <div class="main-content">
+     <% newsData['content'].forEach(function (content) { %>
+       <p>
+         <%= content %>
+       </p>
+    <%  }) %>
+   </div>
+
+ </div>
+
+
+<% include ./partials/script %>
+<script>
+  
+</script>
+<% include ./partials/footer %>
